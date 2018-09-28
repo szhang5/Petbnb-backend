@@ -11,6 +11,7 @@ all:
 	$(MAKE) local
 
 local:
+	$(MAKE) bridge
 	$(MAKE) build
 	$(MAKE) run
 
@@ -24,6 +25,7 @@ run:
 	$(MAKE) stop
 	docker run \
 		-ti \
+		--network=petbnb \
 		--name $(SVC_NAME) \
 		-p $(SERVER_PORT):$(SERVER_PORT) \
 		-v $(PWD):/usr/src/app \
@@ -37,4 +39,7 @@ exec:
 
 stop:
 	docker stop $(SVC_NAME) || true && docker rm $(SVC_NAME) || true
+
+bridge:
+	./scripts/add_bridge.sh
 
