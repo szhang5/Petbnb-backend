@@ -6,6 +6,7 @@ SVC_TAG = latest
 
 # Set the port to expose the frontend
 SERVER_PORT = 8080
+GRPC_PORT = 50051
 
 all:
 	$(MAKE) local
@@ -28,7 +29,8 @@ run:
 		--network=petbnb \
 		--name $(SVC_NAME) \
 		-p $(SERVER_PORT):$(SERVER_PORT) \
-		-v $(PWD):/usr/src/app \
+		-p $(GRPC_PORT):$(GRPC_PORT) \
+		-v $(PWD)/server:/usr/src/app/server \
 		$(SVC_NAME):$(SVC_TAG)
 
 exec:
