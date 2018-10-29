@@ -1,3 +1,4 @@
+const Knex = require('./models/knex');
 const PROTO_PATH = __dirname + '/protos/pet_bnb_service.proto';
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
