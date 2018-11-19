@@ -4,19 +4,32 @@ package petbnbservice;
 
 // The petbnbservice service definition.
 service PetBnbService {
-  // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
-  // Sends another greeting
-  rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+  rpc SignIn (SignInRequest) returns (UserBasicInfo) {}
+  rpc Register (RegisterRequest) returns (UserBasicInfo) {}
+  rpc GetUserInfo (GetUserInfoRequest) returns (UserBasicInfo) {}
 }
 
-// The request message containing the user's name.
-message HelloRequest {
-  string name = 1;
+message SignInRequest {
+  string email = 1;
+  string password = 2;
 }
 
-// The response message containing the greetings
-message HelloReply {
-  string message = 1;
-  int32 userid = 2;
+message RegisterRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message User {
+  int32 userid = 1;
+  string name = 3;
+  string email = 4;
+}
+
+message UserBasicInfo {
+  string success = 1;
+  User user = 2;
+}
+
+message GetUserInfoRequest {
+  string email = 1;
 }

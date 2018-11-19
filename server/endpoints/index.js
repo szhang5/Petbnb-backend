@@ -1,11 +1,13 @@
 'use strict';
 
-const sayHello = require('./hello/sayHello').sayHello;
-const sayHelloAgain = require('./hello/sayHelloAgain').sayHelloAgain;
+const signIn = require('./user/signIn').signIn;
+const register = require('./user/register').register;
+const getUserInfo = require('./user/getUserInfo').getUserInfo;
 
 const exportedEndpoints = {
-	sayHello,
-	sayHelloAgain,
+	signIn,
+	register,
+	getUserInfo,
 }
 
 module.exports = exportedEndpoints;
