@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package petbnbservice;
+
+// The petbnbservice service definition.
+service PetBnbService {
+  rpc SignIn (SignInRequest) returns (UserBasicInfo) {}
+  rpc Register (RegisterRequest) returns (UserBasicInfo) {}
+  rpc GetUserInfo (GetUserInfoRequest) returns (UserBasicInfo) {}
+}
+
+message SignInRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message RegisterRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message User {
+  int32 userid = 1;
+  string name = 3;
+  string email = 4;
+}
+
+message UserBasicInfo {
+  string success = 1;
+  User user = 2;
+}
+
+message GetUserInfoRequest {
+  string email = 1;
+}
