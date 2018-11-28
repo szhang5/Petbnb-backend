@@ -20,7 +20,7 @@ function insertUserInfo(firstname, lastname, email, phone, street, city, state, 
 }
 
 function editProfile(call, callback) {
-	console.log(call);
+	// console.log(call);
 	return insertUserInfo(call.request.firstname, call.request.lastname, call.request.email, call.request.phone, call.request.street, call.request.city, call.request.state, call.request.zip).then(() => {
 		return callback(null, {
 			success: true,
