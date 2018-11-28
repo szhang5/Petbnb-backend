@@ -29,6 +29,7 @@ function getServer() {
 function main() {
   const petBnbServer = getServer();
   petBnbServer.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
+  // petBnbServer.bind('localhost:50051', grpc.ServerCredentials.createInsecure());
   petBnbServer.start();
 }
 
