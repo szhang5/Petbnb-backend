@@ -9,6 +9,7 @@ service PetBnbService {
   rpc GetUserInfo (GetUserInfoRequest) returns (UserBasicInfo) {}
   rpc EditProfile (EditProfileRequest) returns (UserBasicInfo) {}
   rpc GetPost (GetPostRequest) returns (PostInfo) {}
+  rpc GetUserPost (GetUserPostRequest) returns (UserPostInfo) {}
   rpc CreatePost (CreatePostRequest) returns (Success) {}
   rpc SearchPost (SearchPostRequest) returns (Success) {}
 }
@@ -21,6 +22,10 @@ message SignInRequest {
 message RegisterRequest {
   string email = 1;
   string password = 2;
+}
+
+message GetUserPostRequest {
+  string uid = 1;
 }
 
 message GetPostRequest {
@@ -88,6 +93,12 @@ message Post{
   double hour_rate = 6;
   int32 pets_num = 7;
 }
+
+message UserPostInfo{
+  bool success = 1;
+  Post post = 2;
+}
+
 message PostInfo{
   bool success = 1;
   repeated Post post = 2; //repeated->returns an array
