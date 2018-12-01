@@ -5,7 +5,7 @@ const knex = require('../../models/knex');
 
 function findPostByUserId(uid) {
   const rawQuery = `
-  SELECT * FROM post WHERE sitterid = ? 
+  SELECT * FROM post WHERE sitterid = ?
   ORDER BY
   postdate DESC;
   `;
