@@ -6,6 +6,7 @@ const getUserInfo = require('./user/getUserInfo').getUserInfo;
 const editProfile = require('./user/editProfile').editProfile;
 const getPost = require('./post/getPost').getPost;
 const createPost = require('./post/createPost').createPost;
+const searchPost = require('./post/searchPost').searchPost;
 
 const exportedEndpoints = {
 	signIn,
@@ -14,6 +15,7 @@ const exportedEndpoints = {
 	editProfile,
 	getPost,
 	createPost,
+	searchPost,
 }
 
 module.exports = exportedEndpoints;
