@@ -5,9 +5,12 @@ package petbnbservice;
 // The petbnbservice service definition.
 service PetBnbService {
   rpc SignIn (SignInRequest) returns (UserBasicInfo) {}
-  rpc Register (RegisterRequest) returns (UserBasicInfo) {}
+  rpc Register (RegisterRequest) returns (Success) {}
   rpc GetUserInfo (GetUserInfoRequest) returns (UserBasicInfo) {}
   rpc EditProfile (EditProfileRequest) returns (UserBasicInfo) {}
+  rpc GetPost (GetPostRequest) returns (PostInfo) {}
+  rpc CreatePost (CreatePostRequest) returns (Success) {}
+  rpc SearchPost (SearchPostRequest) returns (Success) {}
 }
 
 message SignInRequest {
@@ -18,6 +21,29 @@ message SignInRequest {
 message RegisterRequest {
   string email = 1;
   string password = 2;
+}
+
+message GetPostRequest {
+  string uid = 1;
+}
+
+message CreatePostRequest {
+  string uid = 1;
+  string postdate = 2;
+  string avai_start_date = 3;
+  string avai_end_date = 4;
+  string description = 5;
+  string pet_type = 6;
+  double hour_rate = 7;
+  int32 pets_num = 8;
+}
+
+message SearchPostRequest {
+  string pet_type = 1;
+  double hour_rate = 2;
+  int32 pets_num = 3;
+  string avai_start_date = 4;
+  string avai_end_date = 5;
 }
 
 message User {
@@ -51,4 +77,22 @@ message EditProfileRequest {
   string city = 6;
   string state = 7;
   string zip = 8;
+}
+
+message Post{
+  string postdate = 1;
+  string avai_start_date = 2;
+  string avai_end_date = 3;
+  string description = 4;
+  string pet_type = 5;
+  double hour_rate = 6;
+  int32 pets_num = 7;
+}
+message PostInfo{
+  bool success = 1;
+  repeated Post post = 2; //repeated->returns an array
+}
+
+message Success{
+  bool success = 1;
 }
