@@ -8,11 +8,13 @@ service PetBnbService {
   rpc Register (RegisterRequest) returns (Success) {}
   rpc GetUserInfo (GetUserInfoRequest) returns (UserBasicInfo) {}
   rpc EditProfile (EditProfileRequest) returns (UserBasicInfo) {}
-  rpc GetPost (GetPostRequest) returns (PostInfo) {}
+  rpc GetPost (Empty) returns (PostInfo) {}
   rpc GetUserPost (GetUserPostRequest) returns (UserPostInfo) {}
   rpc CreatePost (CreatePostRequest) returns (Success) {}
   rpc SearchPost (SearchPostRequest) returns (Success) {}
 }
+
+message Empty {}
 
 message SignInRequest {
   string email = 1;
@@ -25,10 +27,6 @@ message RegisterRequest {
 }
 
 message GetUserPostRequest {
-  string uid = 1;
-}
-
-message GetPostRequest {
   string uid = 1;
 }
 
