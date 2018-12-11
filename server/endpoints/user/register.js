@@ -18,11 +18,6 @@ function register(call, callback) {
 	return insertUserByEmail(call.request.email, call.request.password).then(() => {
 		return callback(null, {
 			success: true,
-			user: {
-				userid: 0,
-				name: 'test',
-				email: call.request.email,
-			}
 		});
 	}, (err) => {
 		callback(err, null);
