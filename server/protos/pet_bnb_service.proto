@@ -83,6 +83,7 @@ message EditProfileRequest {
 }
 
 message Post{
+  int32 sitterid = 8;
   string postdate = 1;
   string avai_start_date = 2;
   string avai_end_date = 3;

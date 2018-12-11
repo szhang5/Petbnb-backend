@@ -5,7 +5,7 @@ const knex = require('../../models/knex');
 
 function findPostByUserId() {
   const rawQuery = `
-  SELECT postdate, avai_start_date, avai_end_date, description, pet_type,
+  SELECT sitterid, postdate, avai_start_date, avai_end_date, description, pet_type,
     hour_rate, pets_num
   FROM post ORDER BY postdate DESC;
   `;
@@ -19,6 +19,7 @@ function getPost(call, callback) {
     result.rows.forEach(row => {
     	listPosts.push(
       {
+        sitterid: row.sitterid,
         postdate: row.postdate,
         avai_start_date: row.avai_start_date,
         avai_end_date: row.avai_end_date,
