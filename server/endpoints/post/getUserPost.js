@@ -18,6 +18,7 @@ function getUserPost(call, callback) {
     callback(null, {
       success: true,
       post: {
+        sitterid: result.rows[0].sitterid,
         postdate: result.rows[0].postdate,
         avai_start_date: result.rows[0].avai_start_date,
         avai_end_date: result.rows[0].avai_end_date,
