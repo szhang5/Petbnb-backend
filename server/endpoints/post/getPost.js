@@ -3,21 +3,23 @@
 const knex = require('../../models/knex');
 
 
-function findPostByUserId(uid) {
+function findPostByUserId() {
   const rawQuery = `
-  SELECT * FROM post WHERE sitterid = ?
-  ORDER BY
-  postdate DESC;
+  SELECT sitterid, postdate, avai_start_date, avai_end_date, description, pet_type,
+    hour_rate, pets_num
+  FROM post ORDER BY postdate DESC;
   `;
-  return knex.raw(rawQuery, [uid]);
+  return knex.raw(rawQuery);
 }
 
 function getPost(call, callback) {
-  return findPostByUserId(call.request.uid).then((result) => {
+  return findPostByUserId().then((result) => {
     // console.log(result);
     const listPosts = [];
     result.rows.forEach(row => {
-    	listPosts.push({
+    	listPosts.push(
+      {
+        sitterid: row.sitterid,
         postdate: row.postdate,
         avai_start_date: row.avai_start_date,
         avai_end_date: row.avai_end_date,
@@ -25,7 +27,8 @@ function getPost(call, callback) {
         pet_type: row.pet_type,
         hour_rate: row.hour_rate,
         pets_num: row.pets_num,
-      })  
+      }
+      )  
     })
     callback(null, {
       success: true,
