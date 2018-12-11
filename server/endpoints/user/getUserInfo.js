@@ -12,7 +12,7 @@ function findUserByUsername(email) {
 
 function getUserInfo(call, callback) {
   return findUserByUsername(call.request.email).then((result) => {
-    // console.log(result);
+    console.log(result);
     if (result.rowCount) {
       callback(null, {
         success: true,

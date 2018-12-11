@@ -15,7 +15,7 @@ function insertPost(uid, postdate, avai_start_date, avai_end_date, description, 
 function createPost(call, callback) {
 	return insertPost(call.request.uid, call.request.postdate, call.request.avai_start_date, call.request.avai_end_date, call.request.description, call.request.pet_type, call.request.hour_rate, call.request.pets_num).then(() => {
 		return callback(null, {
-			success: true,
+			success: true, //this message is for developer
 		});
 	}, (err) => {
 		callback(err, null);

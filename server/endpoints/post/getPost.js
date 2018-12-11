@@ -17,7 +17,8 @@ function getPost(call, callback) {
     // console.log(result);
     const listPosts = [];
     result.rows.forEach(row => {
-    	listPosts.push({
+    	listPosts.push(
+      {
         postdate: row.postdate,
         avai_start_date: row.avai_start_date,
         avai_end_date: row.avai_end_date,
@@ -25,7 +26,8 @@ function getPost(call, callback) {
         pet_type: row.pet_type,
         hour_rate: row.hour_rate,
         pets_num: row.pets_num,
-      })  
+      }
+      )  
     })
     callback(null, {
       success: true,
