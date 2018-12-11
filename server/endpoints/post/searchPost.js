@@ -17,6 +17,7 @@ function searchPost(call, callback) {
     const listPosts = [];
     result.rows.forEach(row => {
     	listPosts.push({
+        sitterid: row.sitterid,
         postdate: row.postdate,
         avai_start_date: row.avai_start_date,
         avai_end_date: row.avai_end_date,
