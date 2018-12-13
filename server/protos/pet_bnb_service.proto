@@ -8,11 +8,13 @@ service PetBnbService {
   rpc Register (RegisterRequest) returns (Success) {}
   rpc GetUserInfo (GetUserInfoRequest) returns (UserBasicInfo) {}
   rpc EditProfile (EditProfileRequest) returns (UserBasicInfo) {}
-  rpc GetPost (GetPostRequest) returns (PostInfo) {}
+  rpc GetPost (Empty) returns (PostInfo) {}
   rpc GetUserPost (GetUserPostRequest) returns (UserPostInfo) {}
   rpc CreatePost (CreatePostRequest) returns (Success) {}
-  rpc SearchPost (SearchPostRequest) returns (Success) {}
+  rpc SearchPost (SearchPostRequest) returns (PostInfo) {}
 }
+
+message Empty {}
 
 message SignInRequest {
   string email = 1;
@@ -25,10 +27,6 @@ message RegisterRequest {
 }
 
 message GetUserPostRequest {
-  string uid = 1;
-}
-
-message GetPostRequest {
   string uid = 1;
 }
 
@@ -52,7 +50,7 @@ message SearchPostRequest {
 }
 
 message User {
-  int32 userid = 1;
+  int32 uid = 1;
   int32 personid = 2;
   string email = 3;
   string firstname = 4;
@@ -85,23 +83,25 @@ message EditProfileRequest {
 }
 
 message Post{
+  int32 sitterid = 8;
   string postdate = 1;
   string avai_start_date = 2;
   string avai_end_date = 3;
   string description = 4;
   string pet_type = 5;
   double hour_rate = 6;
-  int32 pets_num = 7;
+  int32  pets_num = 7;
 }
 
 message UserPostInfo{
-  bool success = 1;
-  Post post = 2;
+  bool success = 1; 
+  Post post = 2;  //for single results
 }
 
 message PostInfo{
   bool success = 1;
-  repeated Post post = 2; //repeated->returns an array
+  repeated Post post = 2; //"repeated" keyword returns an array
+                          //for multi results
 }
 
 message Success{
