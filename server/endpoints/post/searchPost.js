@@ -23,7 +23,7 @@ function findPost(pet_type, hour_rate, pets_num, avai_start_date, avai_end_date)
     pets_num_condition = `AND pets_num <= ${pets_num}`;
   }
   if (pet_type) {
-    pet_type_condition = `AND pet_type = '${pet_type}'`;
+    pet_type_condition = `AND position('${pet_type}' in  pet_type)>0`;
   }
   const rawQuery = `
   SELECT * FROM post WHERE TRUE ${pet_type_condition} ${pets_num_condition} ${hour_rate_condition} ${avai_end_date_condition} ${avai_start_date_condition}
