@@ -3,15 +3,37 @@
 const knex = require('../../models/knex');
 
 
-function findPost(pet_type="both", hour_rate=Number.MAX_VALUE, pets_num=Number.MAX_VALUE, avai_start_date='2000-0-0', avai_end_date='2100-0-0') {
+function findPost(pet_type, hour_rate, pets_num, avai_start_date, avai_end_date) {
+  let avai_start_date_condition = '';
+  let avai_end_date_condition = '';
+  let hour_rate_condition = '';
+  let pets_num_condition = '';
+  let pet_type_condition = '';
+
+  if (avai_start_date) {
+    avai_start_date_condition = `AND avai_start_date >= '${avai_start_date}'`;
+  }
+  if (avai_end_date) {
+    avai_end_date_condition = `AND avai_end_date <= '${avai_end_date}'`;
+  }
+  if (hour_rate) {
+    hour_rate_condition = `AND hour_rate <= ${hour_rate}`;
+  } 
+  if (pets_num) {
+    pets_num_condition = `AND pets_num <= ${pets_num}`;
+  }
+  if (pet_type) {
+    pet_type_condition = `AND pet_type = '${pet_type}'`;
+  }
   const rawQuery = `
-  SELECT * FROM post WHERE pet_type = ? AND hour_rate <= ? AND pets_num <= ? AND avai_start_date >= ? AND avai_end_date <= ?
+  SELECT * FROM post WHERE TRUE ${pet_type_condition} ${pets_num_condition} ${hour_rate_condition} ${avai_end_date_condition} ${avai_start_date_condition}
   `;
 
-  return knex.raw(rawQuery, [pet_type, hour_rate, pets_num, avai_start_date, avai_end_date]);
+  return knex.raw(rawQuery);
 }
 
 function searchPost(call, callback) {
+  console.log(call.request)
   return findPost(call.request.pet_type, call.request.hour_rate, call.request.pets_num, call.request.avai_start_date, call.request.avai_end_date).then((result) => {
     // console.log(result);
     const listPosts = [];
