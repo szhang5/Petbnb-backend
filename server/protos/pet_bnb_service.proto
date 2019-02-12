@@ -12,6 +12,7 @@ service PetBnbService {
   rpc GetUserPost (GetUserPostRequest) returns (UserPostInfo) {}
   rpc CreatePost (CreatePostRequest) returns (Success) {}
   rpc SearchPost (SearchPostRequest) returns (PostInfo) {}
+  rpc ImageUpload (GetImageInfoRequest) returns (Success) {}
 }
 
 message Empty {}
@@ -107,3 +108,13 @@ message PostInfo{
 message Success{
   bool success = 1;
 }
+
+message GetImageInfoRequest{
+  string image_base_64 = 1;
+}
+
+
+
+
+
+
