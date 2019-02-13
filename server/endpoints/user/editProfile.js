@@ -9,7 +9,7 @@ function insertUserInfo(firstname, lastname, email, phone, country, street, city
 		SET firstname = ?,
 		    lastname = ?,
 		    phone = ?,
-		    country = ?
+		    country = ?,
 		    street = ?,
 		    city = ?,
 		    state = ?,
@@ -37,6 +37,7 @@ function editProfile(call, callback) {
 				city: call.request.city,
 				state: call.request.state,
 				zip: call.request.zip,
+				image: call.request.image,
 			}
 		});
 	}, (err) => {

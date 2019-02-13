@@ -29,19 +29,14 @@ function storeImageURL(email, imageURL){
 
 
 function uploadImage(imageInfo){
-	cloudinary.uploader.upload(imageInfo, 
-  	function(error, result) {
-  		console.log(result, error); 
-  		return result.url;
-  	});
+	return cloudinary.uploader.upload(imageInfo);
 }
 
 function imageUpload(call, callback) {
-	// console.log(call);
 	uploadImage(call.request.image_base_64).then((image)=>{
-		return storeImageURL(call.request.email, image).then(() => {
+		return storeImageURL(call.request.email, image.url).then(() => {
 			return callback(null, {
-				success: true,
+				imageUrl: image.url,
 			});
 		}, (err) => {
 			callback(err, null);

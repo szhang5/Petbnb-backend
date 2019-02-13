@@ -33,7 +33,7 @@ function findPost(pet_type, hour_rate, pets_num, avai_start_date, avai_end_date)
 }
 
 function searchPost(call, callback) {
-  console.log(call.request)
+  // console.log(call.request)
   return findPost(call.request.pet_type, call.request.hour_rate, call.request.pets_num, call.request.avai_start_date, call.request.avai_end_date).then((result) => {
     // console.log(result);
     const listPosts = [];
