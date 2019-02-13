@@ -8,6 +8,7 @@ const getPost = require('./post/getPost').getPost;
 const getUserPost = require('./post/getUserPost').getUserPost;
 const createPost = require('./post/createPost').createPost;
 const searchPost = require('./post/searchPost').searchPost;
+const imageUpload = require('./imageUpload').imageUpload;
 
 const exportedEndpoints = {
 	signIn,
@@ -18,6 +19,7 @@ const exportedEndpoints = {
 	getUserPost,
 	createPost,
 	searchPost,
+	imageUpload,
 }
 
 module.exports = exportedEndpoints;

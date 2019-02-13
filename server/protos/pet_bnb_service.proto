@@ -77,10 +77,11 @@ message EditProfileRequest {
   string lastname = 2;
   string email = 3;
   string phone = 4;
-  string street = 5;
-  string city = 6;
-  string state = 7;
-  string zip = 8;
+  string country = 5;
+  string street = 6;
+  string city = 7;
+  string state = 8;
+  string zip = 9;
 }
 
 message Post{
@@ -111,6 +112,7 @@ message Success{
 
 message GetImageInfoRequest{
   string image_base_64 = 1;
+  string email = 2;
 }
 
 
