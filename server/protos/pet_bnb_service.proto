@@ -12,6 +12,7 @@ service PetBnbService {
   rpc GetUserPost (GetUserPostRequest) returns (UserPostInfo) {}
   rpc CreatePost (CreatePostRequest) returns (Success) {}
   rpc SearchPost (SearchPostRequest) returns (PostInfo) {}
+  rpc ImageUpload (GetImageInfoRequest) returns (ImageUrlResponse) {}
 }
 
 message Empty {}
@@ -56,10 +57,12 @@ message User {
   string firstname = 4;
   string lastname = 5;
   string phone = 6;
+  string country = 11;
   string street = 7;
   string city = 8;
   string state = 9;
   string zip = 10;
+  string image = 12;
 }
 
 message UserBasicInfo {
@@ -76,10 +79,11 @@ message EditProfileRequest {
   string lastname = 2;
   string email = 3;
   string phone = 4;
-  string street = 5;
-  string city = 6;
-  string state = 7;
-  string zip = 8;
+  string country = 5;
+  string street = 6;
+  string city = 7;
+  string state = 8;
+  string zip = 9;
 }
 
 message Post{
@@ -107,3 +111,16 @@ message PostInfo{
 message Success{
   bool success = 1;
 }
+
+message GetImageInfoRequest{
+  string image_base_64 = 1;
+  string email = 2;
+}
+
+message ImageUrlResponse {
+  string imageUrl = 1;
+}
+
+
+
+
