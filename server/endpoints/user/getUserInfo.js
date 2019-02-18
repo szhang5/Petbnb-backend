@@ -17,8 +17,8 @@ function getUserInfo(call, callback) {
       callback(null, {
         success: true,
         user: {
-          uId: result.rows[0].uid,
-          personId: result.rows[0].personid,
+          uid: result.rows[0].uid,
+          personid: result.rows[0].personid,
           email: result.rows[0].username,
           firstname: result.rows[0].firstname,
           lastname: result.rows[0].lastname,
