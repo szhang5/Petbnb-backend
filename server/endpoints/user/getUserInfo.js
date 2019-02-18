@@ -28,6 +28,8 @@ function getUserInfo(call, callback) {
           city: result.rows[0].city,
           state: result.rows[0].state,
           zip: result.rows[0].zip,
+          lat: result.rows[0].latitude,
+          lng: result.rows[0].longitude,
           image: result.rows[0].image,
         }
       });
