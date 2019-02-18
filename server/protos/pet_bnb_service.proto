@@ -63,6 +63,8 @@ message User {
   string state = 9;
   string zip = 10;
   string image = 12;
+  float lat = 13;
+  float lng = 14;
 }
 
 message UserBasicInfo {
