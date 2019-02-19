@@ -10,6 +10,9 @@ const getUserPost = require('./post/getUserPost').getUserPost;
 const createPost = require('./post/createPost').createPost;
 const searchPost = require('./post/searchPost').searchPost;
 const imageUpload = require('./imageUpload').imageUpload;
+const getPetInfo = require('./pet/getPetInfo').getPetInfo;
+const createPet = require('./pet/createPet').createPet;
+const editPet =  require('./pet/editPet').editPet;
 
 const exportedEndpoints = {
 	signIn,
@@ -22,6 +25,9 @@ const exportedEndpoints = {
 	createPost,
 	searchPost,
 	imageUpload,
+	getPetInfo,
+	createPet,
+	editPet,
 }
 
 module.exports = exportedEndpoints;

@@ -14,6 +14,24 @@ service PetBnbService {
   rpc CreatePost (CreatePostRequest) returns (Success) {}
   rpc SearchPost (SearchPostRequest) returns (PostInfo) {}
   rpc ImageUpload (GetImageInfoRequest) returns (ImageUrlResponse) {}
+  rpc GetPetInfo (Pet) returns (PetInfo) {} 
+  rpc EditPet (EdiPetRequest) returns (Pet) {}
+  rpc CreatePet (CreatePetRequest) returns (Success){}
+}
+
+message EdiPetRequest {
+  int32 petid = 1;
+  string birth = 2;
+  string furcolor = 3;
+  string type = 4;
+  string petname = 5;
+  string weight = 6;
+  string breed = 7;
+  string image = 8;
+}
+
+message CreatePetRequest {
+  int32 uid =1;
 }
 
 message Empty {}
@@ -131,6 +149,20 @@ message UserGeoLocation {
   float lng = 4;
 }
 
-
-
+message PetInfo{
+  bool success = 1;
+  repeated Pet pet = 2; //"repeated" keyword returns an array
+                          //for multi results
+}
+message Pet{
+  int32 petid = 1;
+  int32 uid =2;
+  string birth = 3;
+  string furcolor = 4;
+  string type = 5;
+  string petname = 6;
+  string weight = 7;
+  string breed = 8;
+  string image = 9;
+}
 
