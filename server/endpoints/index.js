@@ -3,6 +3,7 @@
 const signIn = require('./user/signIn').signIn;
 const register = require('./user/register').register;
 const getUserInfo = require('./user/getUserInfo').getUserInfo;
+const getUsersGeoLocation = require('./user/getUsersGeoLocation').getUsersGeoLocation;
 const editProfile = require('./user/editProfile').editProfile;
 const getPost = require('./post/getPost').getPost;
 const getUserPost = require('./post/getUserPost').getUserPost;
@@ -14,6 +15,7 @@ const exportedEndpoints = {
 	signIn,
 	register,
 	getUserInfo,
+	getUsersGeoLocation,
 	editProfile,
 	getPost,
 	getUserPost,

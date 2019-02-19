@@ -16,8 +16,17 @@ const eager_options = {
 };
 
 
+function storePetImageURL(petid, imageURL) {
+	const rawQuery = `
+	UPDATE pet
+		SET image = ?
+		WHERE
+		 petid = ?;
+	`;
+	return knex.raw(rawQuery, [imageURL, petid]);
+}
 
-function storeImageURL(email, imageURL){
+function storeUserImageURL(email, imageURL){
 	const rawQuery = `
 	UPDATE usertable
 		SET image = ?
@@ -34,7 +43,7 @@ function uploadImage(imageInfo){
 
 function imageUpload(call, callback) {
 	uploadImage(call.request.image_base_64).then((image)=>{
-		return storeImageURL(call.request.email, image.url).then(() => {
+		return storeUserImageURL(call.request.email, image.url).then(() => {
 			return callback(null, {
 				imageUrl: image.url,
 			});
