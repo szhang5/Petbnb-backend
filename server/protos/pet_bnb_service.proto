@@ -12,6 +12,25 @@ service PetBnbService {
   rpc GetUserPost (GetUserPostRequest) returns (UserPostInfo) {}
   rpc CreatePost (CreatePostRequest) returns (Success) {}
   rpc SearchPost (SearchPostRequest) returns (PostInfo) {}
+  rpc ImageUpload (GetImageInfoRequest) returns (ImageUrlResponse) {}
+  rpc GetPetInfo (Pet) returns (PetInfo) {} 
+  rpc EditPet (EdiPetRequest) returns (Pet) {}
+  rpc CreatePet (CreatePetRequest) returns (Success){}
+}
+
+message EdiPetRequest {
+  int32 petid = 1;
+  string birth = 2;
+  string furcolor = 3;
+  string type = 4;
+  string petname = 5;
+  string weight = 6;
+  string breed = 7;
+  string image = 8;
+}
+
+message CreatePetRequest {
+  int32 uid =1;
 }
 
 message Empty {}
@@ -56,10 +75,12 @@ message User {
   string firstname = 4;
   string lastname = 5;
   string phone = 6;
+  string country = 11;
   string street = 7;
   string city = 8;
   string state = 9;
   string zip = 10;
+  string image = 12;
 }
 
 message UserBasicInfo {
@@ -76,10 +97,11 @@ message EditProfileRequest {
   string lastname = 2;
   string email = 3;
   string phone = 4;
-  string street = 5;
-  string city = 6;
-  string state = 7;
-  string zip = 8;
+  string country = 5;
+  string street = 6;
+  string city = 7;
+  string state = 8;
+  string zip = 9;
 }
 
 message Post{
@@ -107,3 +129,30 @@ message PostInfo{
 message Success{
   bool success = 1;
 }
+
+message GetImageInfoRequest{
+  string image_base_64 = 1;
+  string email = 2;
+}
+
+message ImageUrlResponse {
+  string imageUrl = 1;
+}
+
+message PetInfo{
+  bool success = 1;
+  repeated Pet pet = 2; //"repeated" keyword returns an array
+                          //for multi results
+}
+message Pet{
+  int32 petid = 1;
+  int32 uid =2;
+  string birth = 3;
+  string furcolor = 4;
+  string type = 5;
+  string petname = 6;
+  string weight = 7;
+  string breed = 8;
+  string image = 9;
+}
+
