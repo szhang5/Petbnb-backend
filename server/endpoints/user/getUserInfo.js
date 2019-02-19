@@ -12,21 +12,23 @@ function findUserByUsername(email) {
 
 function getUserInfo(call, callback) {
   return findUserByUsername(call.request.email).then((result) => {
-    console.log(result);
+    // console.log(result);
     if (result.rowCount) {
       callback(null, {
         success: true,
         user: {
-          uId: result.rows[0].uid,
-          personId: result.rows[0].personid,
+          uid: result.rows[0].uid,
+          personid: result.rows[0].personid,
           email: result.rows[0].username,
           firstname: result.rows[0].firstname,
           lastname: result.rows[0].lastname,
           phone: result.rows[0].phone,
+          country: result.rows[0].country,
           street: result.rows[0].street,
           city: result.rows[0].city,
           state: result.rows[0].state,
           zip: result.rows[0].zip,
+          image: result.rows[0].image,
         }
       });
     } else {
