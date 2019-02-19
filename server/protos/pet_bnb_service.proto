@@ -20,14 +20,13 @@ service PetBnbService {
 
 message EdiPetRequest {
   int32 petid = 1;
-  int32 uid =2;
-  string birth = 3;
-  string furcolor = 4;
-  string type = 5;
-  string petname = 6;
-  double weight = 7;
-  string breed = 8;
-  string image = 9;
+  string birth = 2;
+  string furcolor = 3;
+  string type = 4;
+  string petname = 5;
+  string weight = 6;
+  string breed = 7;
+  string image = 8;
 }
 
 message CreatePetRequest {
@@ -152,7 +151,7 @@ message Pet{
   string furcolor = 4;
   string type = 5;
   string petname = 6;
-  double weight = 7;
+  string weight = 7;
   string breed = 8;
   string image = 9;
 }
