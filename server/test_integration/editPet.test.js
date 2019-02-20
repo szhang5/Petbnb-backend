@@ -11,7 +11,7 @@ describe('test editPet endpoints', () => {
       client => client.editPet({petid:23 , birth:"2019-01-09"  , furcolor:"Yellow mix black" ,  type:"dog" , petname:"Pupuppy II", weight:"Small", breed:"Teddy" ,image:""}, (err, response) => {
       	console.log(response); //read the respong directly if you want;
         expect(err).to.be.equal(null);
-        expect(response.success).to.equal(true);
+        expect(response.petid).to.equal(23);
         done();
       }));
   });

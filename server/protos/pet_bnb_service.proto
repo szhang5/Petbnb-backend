@@ -14,9 +14,10 @@ service PetBnbService {
   rpc CreatePost (CreatePostRequest) returns (Success) {}
   rpc SearchPost (SearchPostRequest) returns (PostInfo) {}
   rpc ImageUpload (GetImageInfoRequest) returns (ImageUrlResponse) {}
-  rpc GetPetInfo (Pet) returns (PetInfo) {} 
+  rpc GetPetInfo (CreatePetRequest) returns (PetInfo) {} 
   rpc EditPet (EdiPetRequest) returns (Pet) {}
   rpc CreatePet (CreatePetRequest) returns (Success){}
+  rpc PetImageUpload (GetPetImageInfoRequest) returns (ImageUrlResponse){}
 }
 
 message EdiPetRequest {
@@ -133,9 +134,14 @@ message Success{
   bool success = 1;
 }
 
-message GetImageInfoRequest{
+message GetImageInfoRequest {
   string image_base_64 = 1;
   string email = 2;
+}
+
+message GetPetImageInfoRequest {
+  string image_base_64 = 1;
+  int32 petid = 2;
 }
 
 message ImageUrlResponse {
