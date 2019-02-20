@@ -26,7 +26,6 @@ message EdiPetRequest {
   string petname = 5;
   string weight = 6;
   string breed = 7;
-  string image = 8;
 }
 
 message CreatePetRequest {

@@ -3,7 +3,7 @@
 const knex = require('../../models/knex');
 
 
-function insertPetInfo(petid  , birth  , furcolor ,  type , petname, weight, breed ,image) {
+function insertPetInfo(petid  , birth  , furcolor ,  type , petname, weight, breed ) {
   let petid_condition = '';
   let birth_condition = '';
   let furcolor_condition = '';
@@ -11,7 +11,7 @@ function insertPetInfo(petid  , birth  , furcolor ,  type , petname, weight, bre
   let petname_condition = '';
   let weight_condition = '';
   let breed_condition = '';
-  let image_condition = '';
+//   let image_condition = '';
   if (petid) {
     petid_condition = ` petid = ${petid}`;
   }
@@ -34,9 +34,9 @@ function insertPetInfo(petid  , birth  , furcolor ,  type , petname, weight, bre
   if (breed) {
     breed_condition = `, breed= '${breed}'`;
   } 
-  if (image) {
-    image_condition = `, image= '${image}'`;
-  }
+//   if (image) {
+//     image_condition = `, image= '${image}'`;
+//   }
     
 //     	const rawInsertQuery = `
 // 		UPDATE pet
@@ -52,14 +52,14 @@ function insertPetInfo(petid  , birth  , furcolor ,  type , petname, weight, bre
 //       petid = ? ;
 // 	`;
   const rawQuery = `
-  UPDATE pet SET petid = petid ${birth_condition} ${furcolor_condition} ${type_condition} ${petname_condition} ${weight_condition} ${breed_condition} ${image_condition} WHERE ${petid_condition};
+  UPDATE pet SET petid = petid ${birth_condition} ${furcolor_condition} ${type_condition} ${petname_condition} ${weight_condition} ${breed_condition}  WHERE ${petid_condition};
   `;
   return knex.raw(rawQuery);
 }
 
 function editPet(call, callback) {
 	// console.log(call);
-	return insertPetInfo( call.request.petid , call.request.birth, call.request.furcolor, call.request.type, call.request.petname, call.request.weight, call.request.breed, call.request.image).then(() => {
+	return insertPetInfo( call.request.petid , call.request.birth, call.request.furcolor, call.request.type, call.request.petname, call.request.weight, call.request.breed).then(() => {
 		return callback(null, {
 			success: true,
 			pet: {
@@ -71,7 +71,7 @@ function editPet(call, callback) {
 				petname: call.request.petname,
 				weight: call.request.weight,
 				breed: call.request.breed,
-				image: call.request.image,
+// 				image: call.request.image,
 			}
 		});
 	}, (err) => {
