@@ -1,8 +1,8 @@
 'use strict';
 
-const knex = require('../models/knex');
+const knex = require('../../models/knex');
 const cloudinary = require('cloudinary').v2;
-const Config = require('../config');
+const Config = require('../../config');
 
 
 cloudinary.config({ 
@@ -11,28 +11,23 @@ cloudinary.config({
   api_secret: `${Config.development.cloudinary.api_secret}`, 
 });
 
-const eager_options = {
-  width: 200, height: 150, crop: 'scale', format: 'jpg'
-};
-
-
-function storeUserImageURL(email, imageURL){
+function storePetImageURL(petid, imageURL){
 	const rawQuery = `
 	UPDATE usertable
 		SET image = ?
 		WHERE
-		 username = ?;
+		 petid = ?;
 	`;
-	return knex.raw(rawQuery, [imageURL, email]);
+	return knex.raw(rawQuery, [imageURL, petid]);
 }
 
 function uploadImage(imageInfo){
 	return cloudinary.uploader.upload(imageInfo);
 }
 
-function imageUpload(call, callback) {
+function petImageUpload(call, callback) {
 	uploadImage(call.request.image_base_64).then((image)=>{
-		return storeUserImageURL(call.request.email, image.url).then(() => {
+		return storePetImageURL(call.request.petid, image.url).then(() => {
 			return callback(null, {
 				imageUrl: image.url,
 			});
@@ -45,5 +40,5 @@ function imageUpload(call, callback) {
 }
 
 module.exports = {
-	imageUpload,
+	petImageUpload,
 };
