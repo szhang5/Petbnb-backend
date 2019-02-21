@@ -7,7 +7,7 @@ service PetBnbService {
   rpc SignIn (SignInRequest) returns (UserBasicInfo) {}
   rpc Register (RegisterRequest) returns (Success) {}
   rpc GetUserInfo (GetUserInfoRequest) returns (UserBasicInfo) {}
-  rpc GetUserGeoLocation (Empty) returns (UserGeoLocation) {}
+  rpc GetUsersGeoLocation (Empty) returns (UserGeoLocation) {}
   rpc EditProfile (EditProfileRequest) returns (UserBasicInfo) {}
   rpc GetPost (Empty) returns (PostInfo) {}
   rpc GetUserPost (GetUserPostRequest) returns (UserPostInfo) {}
@@ -15,6 +15,7 @@ service PetBnbService {
   rpc SearchPost (SearchPostRequest) returns (PostInfo) {}
   rpc ImageUpload (GetImageInfoRequest) returns (ImageUrlResponse) {}
   rpc GetPetInfo (CreatePetRequest) returns (PetInfo) {} 
+  rpc GetPetInfoByID (GetPetIDRequest) returns (Pet) {} 
   rpc EditPet (EdiPetRequest) returns (Pet) {}
   rpc CreatePet (CreatePetRequest) returns (Success){}
   rpc PetImageUpload (GetPetImageInfoRequest) returns (ImageUrlResponse){}
@@ -28,7 +29,10 @@ message EdiPetRequest {
   string petname = 5;
   string weight = 6;
   string breed = 7;
-  string image = 8;
+}
+
+message GetPetIDRequest {
+  int32 petid = 1;
 }
 
 message CreatePetRequest {

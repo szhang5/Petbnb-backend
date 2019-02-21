@@ -4,7 +4,7 @@ const knex = require('../../models/knex');
 
 function getPet(uid) {
   const rawQuery = `
-  SELECT petid, birth, furcolor, type, petname, weight, breed, image FROM pet WHERE uid = ?
+  SELECT petid, uid, birth, furcolor, type, petname, weight, breed, image FROM pet WHERE uid = ?
   ORDER BY
   petid ASC;
   `;

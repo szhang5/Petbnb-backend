@@ -13,7 +13,7 @@ function getAllUsers() {
 
 function getUsersGeoLocation(call, callback) {
   return getAllUsers().then((result) => {
-    // console.log(result);
+    console.log(result);
     const listGeoLocation = [];
     result.rows.forEach(row => {
     	listGeoLocation.push(
