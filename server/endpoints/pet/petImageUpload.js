@@ -12,11 +12,12 @@ cloudinary.config({
 });
 
 function storePetImageURL(petid, imageURL){
+	console.log(petid, ">>>>>>>>>>>" + imageURL)
 	const rawQuery = `
-	UPDATE usertable
+	UPDATE pet
 		SET image = ?
-		WHERE
-		 petid = ?;
+		WHERE 
+		petid = ?;
 	`;
 	return knex.raw(rawQuery, [imageURL, petid]);
 }
@@ -26,6 +27,7 @@ function uploadImage(imageInfo){
 }
 
 function petImageUpload(call, callback) {
+	console.log(call.request.petid);
 	uploadImage(call.request.image_base_64).then((image)=>{
 		return storePetImageURL(call.request.petid, image.url).then(() => {
 			return callback(null, {

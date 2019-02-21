@@ -14,7 +14,6 @@ function getPet(uid) {
 function getPetInfo(call, callback) {
   // console.log(call.request)
   return getPet(call.request.uid).then((result) => {
-    // console.log(result);
     const listPets = [];
     result.rows.forEach(row => {
     	listPets.push({

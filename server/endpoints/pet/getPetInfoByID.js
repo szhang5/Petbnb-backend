@@ -3,27 +3,31 @@
 const knex = require('../../models/knex');
 
 function findPetbyID(petid) {
+  console.log(typeof petid);
   const rawQuery = `
-  SELECT petid, uid, birth, furcolor, type, petname, weight, breed, image FROM pet WHERE petid = ?
+  SELECT * FROM pet WHERE petid = ?
   `;
   return knex.raw(rawQuery, [petid]);
 }
 
-function getPetInfoByID(call, callback) {
-  // console.log(call.request)
+function getPetInfoById(call, callback) {
   return findPetbyID(call.request.petid).then((result) => {
-    console.log(result);
-    callback(null, {
-      // petid: row.petid,
-      // uid: row.uid,
-      // birth: row.birth,
-      // furcolor: row.furcolor,
-      // type: row.type,
-      // petname: row.petname,
-      // weight: row.weight,
-      // breed: row.breed,
-      // image: row.image,
-    });
+    console.log("sfdsfsaf", result);
+    if(result.rowCount){
+       callback(null, {
+        petid: result.rows[0].petid,
+        uid: result.rows[0].uid,
+        birth: result.rows[0].birth,
+        furcolor: result.rows[0].furcolor,
+        type: result.rows[0].type,
+        petname: result.rows[0].petname,
+        weight: result.rows[0].weight,
+        breed: result.rows[0].breed,
+        image: result.rows[0].image,
+      });
+    } else {
+      callback(err, null);
+    }
   }, (err) => {
     callback(err, null);
   }).catch((err) => {
@@ -32,5 +36,5 @@ function getPetInfoByID(call, callback) {
 }
 
 module.exports = {
-  getPetInfoByID,
+  getPetInfoById,
 };
