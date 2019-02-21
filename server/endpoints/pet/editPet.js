@@ -2,7 +2,6 @@
 
 const knex = require('../../models/knex');
 
-
 function insertPetInfo(petid, birth, furcolor, type, petname, weight, breed) {
   const rawInsertQuery = `
     UPDATE pet

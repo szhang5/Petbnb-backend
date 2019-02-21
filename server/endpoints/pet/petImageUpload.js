@@ -12,7 +12,6 @@ cloudinary.config({
 });
 
 function storePetImageURL(petid, imageURL){
-	console.log(petid, ">>>>>>>>>>>" + imageURL)
 	const rawQuery = `
 	UPDATE pet
 		SET image = ?
