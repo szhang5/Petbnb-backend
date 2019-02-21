@@ -15,7 +15,7 @@ service PetBnbService {
   rpc SearchPost (SearchPostRequest) returns (PostInfo) {}
   rpc ImageUpload (GetImageInfoRequest) returns (ImageUrlResponse) {}
   rpc GetPetInfo (CreatePetRequest) returns (PetInfo) {} 
-  rpc GetPetInfoByID (GetPetIDRequest) returns (Pet) {} 
+  rpc GetPetInfoById (GetPetIDRequest) returns (Pet) {} 
   rpc EditPet (EdiPetRequest) returns (Pet) {}
   rpc CreatePet (CreatePetRequest) returns (Success){}
   rpc PetImageUpload (GetPetImageInfoRequest) returns (ImageUrlResponse){}
