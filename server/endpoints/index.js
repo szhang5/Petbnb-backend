@@ -15,6 +15,7 @@ const getPetInfoById = require('./pet/getPetInfoById').getPetInfoById;
 const createPet = require('./pet/createPet').createPet;
 const editPet =  require('./pet/editPet').editPet;
 const petImageUpload =  require('./pet/petImageUpload').petImageUpload;
+const deletePet =  require('./pet/deletePet').deletePet;
 
 const exportedEndpoints = {
 	signIn,
@@ -32,6 +33,7 @@ const exportedEndpoints = {
 	editPet,
 	petImageUpload,
 	getPetInfoById,
+	deletePet,
 }
 
 module.exports = exportedEndpoints;
