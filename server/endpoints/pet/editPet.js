@@ -2,77 +2,32 @@
 
 const knex = require('../../models/knex');
 
-
-function insertPetInfo(petid  , birth  , furcolor ,  type , petname, weight, breed ) {
-  let petid_condition = '';
-  let birth_condition = '';
-  let furcolor_condition = '';
-  let type_condition = '';
-  let petname_condition = '';
-  let weight_condition = '';
-  let breed_condition = '';
-//   let image_condition = '';
-  if (petid) {
-    petid_condition = ` petid = ${petid}`;
-  }
-  if (birth) {
-    birth_condition = `, birth = '${birth}'`;
-  } 
-  if (furcolor) {
-    furcolor_condition = `, furcolor = '${furcolor}'`;
-  }
-  if (type) {
-    type_condition = `, type = '${type}'`;
-  }
-    
-  if (petname) {
-    petname_condition = `, petname= '${petname}'`;
-  }
-  if (weight) {
-    weight_condition = `, weight = '${weight}'`;
-  }
-  if (breed) {
-    breed_condition = `, breed= '${breed}'`;
-  } 
-//   if (image) {
-//     image_condition = `, image= '${image}'`;
-//   }
-    
-//     	const rawInsertQuery = `
-// 		UPDATE pet
-// 		SET 
-// 		    birth = ?,
-// 		    furcolor = ?,
-// 		    type = ?,
-// 		    petname = ?,
-// 		    weight = ?,
-// 		    breed = ?,
-// 		    image = ?
-// 		WHERE 
-//       petid = ? ;
-// 	`;
-  const rawQuery = `
-  UPDATE pet SET petid = petid ${birth_condition} ${furcolor_condition} ${type_condition} ${petname_condition} ${weight_condition} ${breed_condition}  WHERE ${petid_condition};
+function insertPetInfo(petid, birth, furcolor, type, petname, weight, breed) {
+  const rawInsertQuery = `
+    UPDATE pet
+    SET birth = ?,
+        furcolor = ?,
+        type = ?,
+        petname = ?,
+        weight = ?,
+        breed = ?
+    WHERE
+       petid = ?;
   `;
-  return knex.raw(rawQuery);
+  return knex.raw(rawInsertQuery, [birth, furcolor, type, petname, weight, breed, petid]);
 }
 
 function editPet(call, callback) {
-	// console.log(call);
+	// console.log(call.request);
 	return insertPetInfo( call.request.petid , call.request.birth, call.request.furcolor, call.request.type, call.request.petname, call.request.weight, call.request.breed).then(() => {
 		return callback(null, {
-			success: true,
-			pet: {
-				petid: call.request.petid,
-				uid: call.request.uid,
-				birth: call.request.birth,
-				furcolor: call.request.furcolor,
-				type: call.request.type,
-				petname: call.request.petname,
-				weight: call.request.weight,
-				breed: call.request.breed,
-// 				image: call.request.image,
-			}
+			petid: call.request.petid,
+			birth: call.request.birth,
+			furcolor: call.request.furcolor,
+			type: call.request.type,
+			petname: call.request.petname,
+			weight: call.request.weight,
+			breed: call.request.breed,
 		});
 	}, (err) => {
 		callback(err, null);

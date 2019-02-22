@@ -13,10 +13,10 @@ cloudinary.config({
 
 function storePetImageURL(petid, imageURL){
 	const rawQuery = `
-	UPDATE usertable
+	UPDATE pet
 		SET image = ?
-		WHERE
-		 petid = ?;
+		WHERE 
+		petid = ?;
 	`;
 	return knex.raw(rawQuery, [imageURL, petid]);
 }

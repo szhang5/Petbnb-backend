@@ -27,7 +27,7 @@ function insertUserInfo({firstname, lastname, email, phone, country, street, cit
 
 function getGeoLocation({street, city, state, zip}){
 	const address = street + "," + city + "," + state;
-	console.log(address);
+	// console.log(address);
 	return googleMapsClient.geocode({address: address })
 	  .asPromise();
 }

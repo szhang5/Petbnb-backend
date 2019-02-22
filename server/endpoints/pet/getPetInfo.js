@@ -4,7 +4,7 @@ const knex = require('../../models/knex');
 
 function getPet(uid) {
   const rawQuery = `
-  SELECT petid, birth, furcolor, type, petname, weight, breed, image FROM pet WHERE uid = ?
+  SELECT petid, uid, birth, furcolor, type, petname, weight, breed, image FROM pet WHERE uid = ?
   ORDER BY
   petid ASC;
   `;
@@ -12,9 +12,8 @@ function getPet(uid) {
 }
 
 function getPetInfo(call, callback) {
-  // console.log(call.request)
   return getPet(call.request.uid).then((result) => {
-    // console.log(result);
+    // console.log(result.rows);
     const listPets = [];
     result.rows.forEach(row => {
     	listPets.push({

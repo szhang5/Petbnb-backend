@@ -11,11 +11,6 @@ cloudinary.config({
   api_secret: `${Config.development.cloudinary.api_secret}`, 
 });
 
-const eager_options = {
-  width: 200, height: 150, crop: 'scale', format: 'jpg'
-};
-
-
 function storeUserImageURL(email, imageURL){
 	const rawQuery = `
 	UPDATE usertable
