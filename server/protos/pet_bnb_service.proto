@@ -19,6 +19,7 @@ service PetBnbService {
   rpc EditPet (EdiPetRequest) returns (Pet) {}
   rpc CreatePet (CreatePetRequest) returns (Success){}
   rpc PetImageUpload (GetPetImageInfoRequest) returns (ImageUrlResponse){}
+  rpc DeletePet (GetPetIDRequest) returns (Success){}
 }
 
 message EdiPetRequest {
