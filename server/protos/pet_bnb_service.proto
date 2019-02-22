@@ -37,6 +37,13 @@ message GetPetIDRequest {
 
 message CreatePetRequest {
   int32 uid =1;
+  string birth = 2;
+  string furcolor = 3;
+  string type = 4;
+  string petname = 5;
+  string weight = 6;
+  string breed = 7;
+  string image_base_64 = 8;
 }
 
 message Empty {}

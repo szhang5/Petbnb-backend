@@ -26,7 +26,6 @@ function uploadImage(imageInfo){
 }
 
 function petImageUpload(call, callback) {
-	console.log(call.request.petid);
 	uploadImage(call.request.image_base_64).then((image)=>{
 		return storePetImageURL(call.request.petid, image.url).then(() => {
 			return callback(null, {

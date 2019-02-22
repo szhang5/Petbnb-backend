@@ -12,7 +12,6 @@ function findPetbyID(petid) {
 
 function getPetInfoById(call, callback) {
   return findPetbyID(call.request.petid).then((result) => {
-    console.log("sfdsfsaf", result);
     if(result.rowCount){
        callback(null, {
         petid: result.rows[0].petid,

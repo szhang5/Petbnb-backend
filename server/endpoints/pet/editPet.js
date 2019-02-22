@@ -18,7 +18,7 @@ function insertPetInfo(petid, birth, furcolor, type, petname, weight, breed) {
 }
 
 function editPet(call, callback) {
-	console.log(call.request);
+	// console.log(call.request);
 	return insertPetInfo( call.request.petid , call.request.birth, call.request.furcolor, call.request.type, call.request.petname, call.request.weight, call.request.breed).then(() => {
 		return callback(null, {
 			petid: call.request.petid,
