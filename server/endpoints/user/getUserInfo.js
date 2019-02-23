@@ -31,6 +31,8 @@ function getUserInfo(call, callback) {
           lat: result.rows[0].latitude,
           lng: result.rows[0].longitude,
           image: result.rows[0].image,
+          user_type: result.rows[0].user_type,
+          balance: result.rows[0].balance,
         }
       });
     } else {
