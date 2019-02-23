@@ -57,6 +57,7 @@ message SignInRequest {
 message RegisterRequest {
   string email = 1;
   string password = 2;
+  int32 user_type = 3;
 }
 
 message GetUserPostRequest {
