@@ -7,7 +7,7 @@ service PetBnbService {
   rpc SignIn (SignInRequest) returns (UserBasicInfo) {}
   rpc Register (RegisterRequest) returns (Success) {}
   rpc GetUserInfo (GetUserInfoRequest) returns (UserBasicInfo) {}
-  rpc GetUsersGeoLocation (Empty) returns (UserGeoLocation) {}
+  rpc GetUsersGeoLocation (Empty) returns (UserGeoLocationRequest) {}
   rpc EditProfile (EditProfileRequest) returns (UserBasicInfo) {}
   rpc GetPost (Empty) returns (PostInfo) {}
   rpc GetUserPost (GetUserPostRequest) returns (UserPostInfo) {}
@@ -161,6 +161,11 @@ message GetPetImageInfoRequest {
 
 message ImageUrlResponse {
   string imageUrl = 1;
+}
+
+message UserGeoLocationRequest {
+  bool success = 1;
+  repeated UserGeoLocation userGeoLocation = 2;
 }
 
 message UserGeoLocation {
