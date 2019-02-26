@@ -6,7 +6,7 @@ const knex = require('../../models/knex');
 function getAllUsers() {
   const rawQuery = `
   SELECT uid, user_type, latitude, longitude
-  FROM usertable;
+  FROM usertable WHERE user_type = 0 AND latitude IS NOT NULL;
   `;
   return knex.raw(rawQuery);
 }

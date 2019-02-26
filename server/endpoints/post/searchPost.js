@@ -17,10 +17,23 @@ function findPost(pet_type, hour_rate, pets_num, avai_start_date, avai_end_date)
     avai_end_date_condition = `AND avai_end_date <= '${avai_end_date}'`;
   }
   if (hour_rate) {
-    hour_rate_condition = `AND hour_rate <= ${hour_rate}`;
+      if(hour_rate == 20){
+          hour_rate_condition = `AND hour_rate <= ${hour_rate}`;
+         }
+      if(hour_rate == 50){
+          hour_rate_condition = `AND hour_rate >= 20 AND hour_rate <= ${hour_rate}`;
+         }
+      if(hour_rate == 100){
+          hour_rate_condition = `AND hour_rate >= 50 AND hour_rate <= ${hour_rate}`;
+         }
   } 
   if (pets_num) {
-    pets_num_condition = `AND pets_num <= ${pets_num}`;
+    if(pets_num == 0){
+        pets_num_condition = `AND pets_num <= 3`;
+    }
+    if(pets_num > 0){
+        pets_num_condition = `AND pets_num <= ${pets_num}`;
+    }
   }
   if (pet_type) {
     pet_type_condition = `AND position('${pet_type}' in  pet_type)>0`;
