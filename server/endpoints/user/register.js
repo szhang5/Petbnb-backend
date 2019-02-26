@@ -8,8 +8,8 @@ function insertUserByEmail(email, password, user_type) {
 	INSERT INTO usertable (username, password, user_type) VALUES(?, ?, ?)
 	ON CONFLICT (username) DO UPDATE
 	SET username = excluded.username,
-			password = excluded.password,
-			user_type = excluded.user_type;
+		password = excluded.password,
+		user_type = excluded.user_type;
 	`;
 	return knex.raw(rawInsertQuery, [email, password, user_type]);
 }
