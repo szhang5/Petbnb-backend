@@ -54,8 +54,8 @@ function editProfile(call, callback) {
 				return callback(null, {
 				success: true,
 				user: {
-					userid: call.request.uid,
-	      			personid: call.request.personid,
+					// userid: call.request.uid,
+	    //   			personid: call.request.personid,
 					email: call.request.email,
 					firstname: call.request.firstname,
 					lastname: call.request.lastname,
