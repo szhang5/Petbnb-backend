@@ -3,7 +3,7 @@
 const knex = require('../../models/knex');
 
 function findPetbyID(petid) {
-  console.log(typeof petid);
+  // console.log(typeof petid);
   const rawQuery = `
   SELECT * FROM pet WHERE petid = ?
   `;

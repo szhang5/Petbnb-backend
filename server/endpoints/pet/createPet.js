@@ -16,25 +16,36 @@ function uploadImage(imageInfo){
 
 
 function insertPetByUid(uid, birth, furcolor, type, petname, weight, breed, imageURL) {
+	const birthValue = birth || null;
 	const rawInsertQuery = `
 	INSERT INTO pet (uid, birth, furcolor, type, petname, weight, breed, image) VALUES(?, ?, ?, ?, ?, ?, ?, ?);
 	`;
-	return knex.raw(rawInsertQuery, [uid, birth, furcolor, type, petname, weight, breed, imageURL]);
+	return knex.raw(rawInsertQuery, [uid, birthValue, furcolor, type, petname, weight, breed, imageURL]);
 }
 
 
-function createPet(call, callback) {
+async function createPet(call, callback) {
+	let image = {url: ''};
+	if(call.request.image_base_64) {
+		image = await uploadImage(call.request.image_base_64);
+	}
+	return insertPetByUid(call.request.uid, call.request.birth, call.request.furcolor,
+		call.request.type, call.request.petname, call.request.weight, call.request.breed,
+		image.url)
+	.then(() => {
+		return callback(null, {
+			success: true,
+		});
+	}, (err) => {
+		callback(err, null);
+	}).catch((err) => {
+		callback(err, null);
+	})
+
+
+
 	return uploadImage(call.request.image_base_64).then((image)=>{
-		console.log("dfsfagsgre" ,image.url);
-		return insertPetByUid(call.request.uid, call.request.birth, call.request.furcolor, call.request.type, call.request.petname, call.request.weight, call.request.breed, image.url).then(() => {
-			return callback(null, {
-				success: true,
-			});
-		}, (err) => {
-			callback(err, null);
-		}).catch((err) => {
-			callback(err, null);
-		})
+		
 	})
 }
 
