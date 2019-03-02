@@ -20,6 +20,18 @@ service PetBnbService {
   rpc CreatePet (CreatePetRequest) returns (Success){}
   rpc PetImageUpload (GetPetImageInfoRequest) returns (ImageUrlResponse){}
   rpc DeletePet (GetPetIDRequest) returns (Success){}
+  rpc EditPost (EditPostRequest) returns (Success){}
+}
+
+message EditPostRequest{
+  int32 sitterid = 8;
+  string postdate = 1;
+  string avai_start_date = 2;
+  string avai_end_date = 3;
+  string description = 4;
+  string pet_type = 5;
+  double hour_rate = 6;
+  int32  pets_num = 7;
 }
 
 message EdiPetRequest {
