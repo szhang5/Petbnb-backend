@@ -11,7 +11,6 @@ service PetBnbService {
   rpc EditProfile (EditProfileRequest) returns (UserBasicInfo) {}
   rpc GetPost (Empty) returns (PostInfo) {}
   rpc GetUserPost (GetUserPostRequest) returns (UserPostInfo) {}
-  rpc CreatePost (CreatePostRequest) returns (Success) {}
   rpc SearchPost (SearchPostRequest) returns (PostInfo) {}
   rpc ImageUpload (GetImageInfoRequest) returns (ImageUrlResponse) {}
   rpc GetPetInfo (CreatePetRequest) returns (PetInfo) {} 
@@ -73,18 +72,7 @@ message RegisterRequest {
 }
 
 message GetUserPostRequest {
-  string uid = 1;
-}
-
-message CreatePostRequest {
-  string uid = 1;
-  string postdate = 2;
-  string avai_start_date = 3;
-  string avai_end_date = 4;
-  string description = 5;
-  string pet_type = 6;
-  double hour_rate = 7;
-  int32 pets_num = 8;
+  int32 uid = 1;
 }
 
 message SearchPostRequest {
