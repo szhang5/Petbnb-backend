@@ -5,18 +5,19 @@ const knex = require('../../models/knex');
 
 function updatePost(postdate, avai_start_date, avai_end_date, description, pet_type, hour_rate, pets_num, sitterid) {
 	const rawInsertQuery = `
-	UPDATE post
+    
+	INSERT INTO post(postdate, avai_start_date, avai_end_date, description, pet_type, hour_rate, pets_num, sitterid)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    ON CONFLICT (sitterid) DO UPDATE
 	SET postdate = ?,
 	    avai_start_date = ?,
         avai_end_date = ?,
         description = ?,
         pet_type = ?,
         hour_rate = ?,
-        pets_num = ?
-    WHERE
-        sitterid = ?;
+        pets_num = ?;
   `;
-	return knex.raw(rawInsertQuery, [postdate, avai_start_date, avai_end_date, description, pet_type, hour_rate, pets_num, sitterid]);
+	return knex.raw(rawInsertQuery, [postdate, avai_start_date, avai_end_date, description, pet_type, hour_rate, pets_num, sitterid, postdate, avai_start_date, avai_end_date, description, pet_type, hour_rate, pets_num]);
 }
 
 
