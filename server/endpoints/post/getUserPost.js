@@ -4,17 +4,17 @@ const knex = require('../../models/knex');
 
 
 function getPostByUserId(uid) {
+//   console.log("testInfo:-----------------------------:");
+//   console.log(uid);
   const rawQuery = `
-  SELECT * FROM post WHERE sitterid = ? 
-  ORDER BY
-  postdate DESC;
+  SELECT * FROM post WHERE sitterid = ?;
   `;
   return knex.raw(rawQuery, [uid]);
 }
 
 function getUserPost(call, callback) {
   return getPostByUserId(call.request.uid).then((result) => {
-    // console.log(result);
+//     console.log("testInfo:-----------------------------:"+call.request.uid);
     callback(null, {
       success: true,
       post: {
