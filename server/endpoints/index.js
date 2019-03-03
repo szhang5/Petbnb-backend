@@ -7,7 +7,6 @@ const getUsersGeoLocation = require('./user/getUsersGeoLocation').getUsersGeoLoc
 const editProfile = require('./user/editProfile').editProfile;
 const getPost = require('./post/getPost').getPost;
 const getUserPost = require('./post/getUserPost').getUserPost;
-const createPost = require('./post/createPost').createPost;
 const searchPost = require('./post/searchPost').searchPost;
 const editPost = require('./post/editPost').editPost;
 const imageUpload = require('./imageUpload').imageUpload;
@@ -27,7 +26,6 @@ const exportedEndpoints = {
 	editProfile,
 	getPost,
 	getUserPost,
-	createPost,
 	searchPost,
 	imageUpload,
 	getPetInfo,
