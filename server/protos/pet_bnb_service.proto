@@ -20,6 +20,14 @@ service PetBnbService {
   rpc PetImageUpload (GetPetImageInfoRequest) returns (ImageUrlResponse){}
   rpc DeletePet (GetPetIDRequest) returns (Success){}
   rpc EditPost (EditPostRequest) returns (Success){}
+  rpc CreateTransaction(CreateTransactionRequest) returns (Success){}
+}
+
+message CreateTransactionRequest{
+  int32 petid = 1;
+  int32 sitterid = 2;
+  string startdate = 3;
+  string enddate = 4;
 }
 
 message EditPostRequest{
@@ -98,7 +106,7 @@ message User {
   string image = 12;
   float lat = 13;
   float lng = 14;
-  int32 uer_type = 15;//(owner) 1   (sitter) 0
+  int32 user_type = 15;//(owner) 1   (sitter) 0
   float balance = 16;
 }
 
