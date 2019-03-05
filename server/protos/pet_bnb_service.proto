@@ -21,6 +21,11 @@ service PetBnbService {
   rpc DeletePet (GetPetIDRequest) returns (Success){}
   rpc EditPost (EditPostRequest) returns (Success){}
   rpc CreateTransaction(CreateTransactionRequest) returns (Success){}
+  rpc GetUserInfoById(GetUserInfoByIdRequest) returns (UserBasicInfo){}
+}
+
+message GetUserInfoByIdRequest{
+    int32 uid = 1;
 }
 
 message CreateTransactionRequest{
