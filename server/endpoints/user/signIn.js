@@ -17,6 +17,7 @@ function signIn(call, callback) {
 				success: true,
 				user: {
 					email: result.rows[0].username,
+                    user_type: result.rows[0].user_type
 				}
 			});
 		} else {
