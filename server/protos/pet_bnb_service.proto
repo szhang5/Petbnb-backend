@@ -22,6 +22,15 @@ service PetBnbService {
   rpc EditPost (EditPostRequest) returns (Success){}
   rpc CreateTransaction(CreateTransactionRequest) returns (Success){}
   rpc GetUserInfoById(GetUserInfoByIdRequest) returns (UserBasicInfo){}
+  rpc SearchPostSitterInfo(SearchPostSitterInfoRequest) returns (UsersBasicInfo){}
+}
+
+message SearchPostSitterInfoRequest{
+  string pet_type = 1;
+  double hour_rate = 2;
+  int32 pets_num = 3;
+  string avai_start_date = 4;
+  string avai_end_date = 5;
 }
 
 message GetUserInfoByIdRequest{
@@ -114,6 +123,12 @@ message User {
   int32 user_type = 15;//(owner) 1   (sitter) 0
   float balance = 16;
 }
+
+message UsersBasicInfo {
+  string success = 1;
+  repeated User user = 2;
+}
+
 
 message UserBasicInfo {
   string success = 1;
