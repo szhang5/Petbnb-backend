@@ -20,9 +20,42 @@ service PetBnbService {
   rpc PetImageUpload (GetPetImageInfoRequest) returns (ImageUrlResponse){}
   rpc DeletePet (GetPetIDRequest) returns (Success){}
   rpc EditPost (EditPostRequest) returns (Success){}
-  rpc CreateTransaction(CreateTransactionRequest) returns (Success){}
-  rpc GetUserInfoById(GetUserInfoByIdRequest) returns (UserBasicInfo){}
-  rpc SearchPostSitterInfo(SearchPostSitterInfoRequest) returns (UsersBasicInfo){}
+  rpc CreateTransaction (CreateTransactionRequest) returns (Success){}
+  rpc GetUserInfoById (GetUserInfoByIdRequest) returns (UserBasicInfo){}
+  rpc SearchPostSitterInfo (SearchPostSitterInfoRequest) returns (UsersBasicInfo){}//Get corresponding sitters' info when search Post
+  rpc HomePageSitterPostInfo (Empty) returns (AllSitterPostInfo){}//get All Posts & Sitters' info for home page
+}
+
+message AllSitterPostInfo{
+  string success = 1;
+  repeated SitterPostInfo sitterPostInfo = 2;
+}
+
+message SitterPostInfo{
+  int32 uid = 1;
+  int32 personid = 2;
+  string email = 3;
+  string firstname = 4;
+  string lastname = 5;
+  string phone = 6;
+  string country = 11;
+  string street = 7;
+  string city = 8;
+  string state = 9;
+  string zip = 10;
+  string image = 12;
+  float lat = 13;
+  float lng = 14;
+  int32 user_type = 15;//(owner) 1   (sitter) 0
+  float balance = 16;
+  int32 sitterid = 17;
+  string postdate = 18;
+  string avai_start_date = 19;
+  string avai_end_date = 20;
+  string description = 21;
+  string pet_type = 22;
+  double hour_rate = 23;
+  int32  pets_num = 24;
 }
 
 message SearchPostSitterInfoRequest{
