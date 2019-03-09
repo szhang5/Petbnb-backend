@@ -19,6 +19,7 @@ const deletePet =  require('./pet/deletePet').deletePet;
 const createTransaction = require('./transaction/createTransaction').createTransaction;
 const getUserInfoById = require('./user/getUserInfoById').getUserInfoById;
 const searchPostSitterInfo = require('./user/searchPostSitterInfo').searchPostSitterInfo;
+const homePageSitterPostInfo = require('./homePageSitterPostInfo').homePageSitterPostInfo;
 
 const exportedEndpoints = {
 	signIn,
@@ -40,6 +41,7 @@ const exportedEndpoints = {
 	createTransaction,
 	getUserInfoById,
 	searchPostSitterInfo,
+	homePageSitterPostInfo,
 }
 
 module.exports = exportedEndpoints;
