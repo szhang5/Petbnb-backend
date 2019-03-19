@@ -3,17 +3,17 @@
 const expect = require('chai').expect;
 const service = require('./petbnb-client');
 
-
+var date = new Date();
+console.log("---------------------------------------------------");
 describe('test createTransaction endpoints', () => {
   it('gets right response message', (done) => {
     service.connect().then(
-      client => client.createTransaction({petid: 13, sitterid:5, startdate: "2019-01-16", 
-      	enddate:"2019-09-15"}, (err, response) => {
+      client => client.createTransaction({petid: [86,87,46], sitterid:50, ownerid:5 }, (err, response) => {
       	console.log(response); //read the respong directly if you want;
         expect(err).to.be.equal(null);
         expect(response.success).to.equal(true);
         done();
-      }));
+      })
+    );//then
   });
 });
-// INSERT INTO transaction (petid, ownerid  , sitterid, startdate, enddate) VALUES(13, (select pet.uid from pet where pet.petid = 13), 5, '2019-01-16', '2019-02-16');
