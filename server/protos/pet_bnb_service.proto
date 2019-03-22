@@ -71,9 +71,8 @@ message GetUserInfoByIdRequest{
 }
 
 message CreateTransactionRequest{
-  int32 ownerid = 1;
-  int32 sitterid = 2;
-  repeated int32 petid = 3;
+  int32 sitterid = 1;
+  repeated int32 petid = 2;
 }
 
 message EditPostRequest{
