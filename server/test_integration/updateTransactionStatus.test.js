@@ -3,15 +3,16 @@
 const expect = require('chai').expect;
 const service = require('./petbnb-client');
 
-describe('test getPetInfoByID endpoints', () => {
+// console.log("---------------------------------------------------");
+describe('test updateTransactionStatus endpoints', () => {
   xit('gets right response message', (done) => {
     service.connect().then(
-      client => client.getPetInfoById({petid: 19}, (err, response) => {
+      client => client.updateTransactionStatus({transacid:96, status:0 }, (err, response) => {
       	console.log(response); //read the respong directly if you want;
         expect(err).to.be.equal(null);
-//         expect(response.petname).to.equal(pet22);
-//         expect(response.furcolor).to.equal(Bronze);
+        expect(response.success).to.equal(true);
         done();
-      }));
+      })
+    );//then
   });
 });

@@ -5,7 +5,7 @@ const service = require('./petbnb-client');
 
 
 describe('test editPet endpoints', () => {
-  it('gets right response message', (done) => {
+  xit('gets right response message', (done) => {
     service.connect().then(
 //         petid , uid , birth  , furcolor ,  type , petname, weight, breed ,image
       client => client.editPet({petid:1 , birth:"2019-01-09"  , furcolor:"Yellow mix black" ,  type:"dog" , petname:"Pupuppy III", weight:"Small", breed:"Teddy"}, (err, response) => {
