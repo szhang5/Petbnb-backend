@@ -43,13 +43,6 @@ function getUserTransaction(call, callback) {
           tempPetsid = Array.from(temp);
           petsid.splice(0,petsid.length);//reset petsid array
           petsid.push(row.petid);
-           singleTransaction = {
-                 owner : owner,
-                 sitter : sitter,
-                 transacinfo : transacinfo,
-                 pets : pets
-             }
-             userTransactions.push(singleTransaction);
       }//if
         transacinfo = {
               transacid : lastTransacid,
@@ -113,6 +106,13 @@ function getUserTransaction(call, callback) {
            };//pet
          
          if(row.transacid != lastTransacid){
+             singleTransaction = {
+                 owner : owner,
+                 sitter : sitter,
+                 transacinfo : transacinfo,
+                 pets : pets
+             }
+             userTransactions.push(singleTransaction);
              pets.splice(0,pets.length);//reset petsid array
          }//push into callback list
       pets.push(pet);

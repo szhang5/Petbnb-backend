@@ -54,7 +54,13 @@ message TransacInfo{
   int32 ownerid = 2;
   int32 sitterid = 3;
   int32 status = 4;// status	(- 0 Sitter未选择， 1 Sitter已经接受， 2 Sitting已paid,  3被Sitter拒绝，)
-  repeated int32 petid = 5;
+  string avai_start_date = 5;
+  string avai_end_date = 6;
+  string description = 7;
+  string pet_type = 8;
+  float hour_rate = 9;
+  int32 pets_num = 10;
+  repeated int32 petid = 11;
 }
 
 message AllSitterPostInfo{
