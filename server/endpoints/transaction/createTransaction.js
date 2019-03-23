@@ -3,23 +3,28 @@
 const knex = require('../../models/knex');
 
 async function insertTransaction(ownerid, sitterid, petsid) {
-    var transacid = 0;
-    findTransacid().then((result) => {
-        transacid = result.rows[0].max;
-        
-        transacid += 1 ;
-        for(let i = 0; i < petsid.length; i++){
-            insertCurrentSittingPet(transacid, petsid[i]).then((result) => {
-            })
-        }//for
-        const rawInsertQuery = `
-        INSERT INTO transaction (ownerid, sitterid) VALUES(?, ?);
-        `;
-        return knex.raw(rawInsertQuery, [ownerid, sitterid]);
-    })//findTransacid
+    const rawInsertQuery = `
+    INSERT INTO transaction (ownerid, sitterid, avai_start_date, avai_end_date, description, pet_type, hour_rate, pets_num) VALUES(?, ?, 
+        (SELECT avai_start_date FROM post WHERE sitterid = ? ),
+        (SELECT avai_end_date FROM post WHERE sitterid = ? ),
+        (SELECT description FROM post WHERE sitterid = ? ),
+        (SELECT pet_type FROM post WHERE sitterid = ? ),
+        (SELECT hour_rate FROM post WHERE sitterid = ? ),
+        (SELECT pets_num FROM post WHERE sitterid = ? )
+        )
+    RETURNING transacid;
+    `; 
+    const result = await knex.raw(rawInsertQuery, [ownerid, sitterid, sitterid, sitterid, sitterid, sitterid, sitterid, sitterid]);
+    const transacid = result.rows[0].transacid;
+
+    for(let i = 0; i < petsid.length; i++){
+        insertCurrentSittingPet(transacid, petsid[i]).then((result) => {
+        })
+    }
 }//insertTransaction
 
 async function  insertCurrentSittingPet(transacid, petid) {
+
 	const rawInsertQuery = `
 	INSERT INTO currentSittingPet (transacid, petid) VALUES(${transacid}, ${petid});
 	`;
@@ -27,12 +32,6 @@ async function  insertCurrentSittingPet(transacid, petid) {
 	return knex.raw(rawInsertQuery);
 }
 
-function findTransacid() {
-    const rawInsertQuery = `
-	SELECT MAX(transacid) FROM transaction;
-	`;
-	return knex.raw(rawInsertQuery);
-}
     
 function findOnwerid(petid) {
     var firstPetid = petid[0];
@@ -64,3 +63,4 @@ async function createTransaction(call, callback) {
 module.exports = {
 	createTransaction,
 };
+
