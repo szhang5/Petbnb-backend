@@ -20,8 +20,11 @@ const createTransaction = require('./transaction/createTransaction').createTrans
 const getUserInfoById = require('./user/getUserInfoById').getUserInfoById;
 const searchPostSitterInfo = require('./user/searchPostSitterInfo').searchPostSitterInfo;
 const homePageSitterPostInfo = require('./homePageSitterPostInfo').homePageSitterPostInfo;
+const updateTransactionStatus = require('./transaction/updateTransactionStatus').updateTransactionStatus;
+const getUserTransaction = require('./transaction/getUserTransaction').getUserTransaction;
 
 const exportedEndpoints = {
+	updateTransactionStatus,
 	signIn,
 	register,
 	getUserInfo,
@@ -42,6 +45,7 @@ const exportedEndpoints = {
 	getUserInfoById,
 	searchPostSitterInfo,
 	homePageSitterPostInfo,
+	getUserTransaction,
 }
 
 module.exports = exportedEndpoints;

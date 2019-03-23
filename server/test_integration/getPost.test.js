@@ -5,7 +5,7 @@ const service = require('./petbnb-client');
 
 
 describe('test getpost endpoints', () => {
-  it('gets right response message', (done) => {
+  xit('gets right response message', (done) => {
     service.connect().then(
       client => client.getPost({}, (err, response) => {
       	// console.log(response); //read the respong directly if you want;
