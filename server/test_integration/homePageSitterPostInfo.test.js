@@ -5,7 +5,7 @@ const service = require('./petbnb-client');
 
 
 describe('test homePageSitterPostInfo endpoints', () => {
-  it('gets right response message', (done) => {
+  xit('gets right response message', (done) => {
     service.connect().then(
       client => client.homePageSitterPostInfo({}, (err, response) => {
     	console.log("Array length:");
