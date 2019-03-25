@@ -26,6 +26,12 @@ service PetBnbService {
   rpc HomePageSitterPostInfo (Empty) returns (AllSitterPostInfo){}//get All Posts & Sitters' info for home page
   rpc GetUserTransaction (GetUserTransactionRequest) returns (UserTransaction){}
   rpc UpdateTransactionStatus (UpdateTransactionStatusRequest) returns (Success){}
+  rpc SearchPostAndSitterInfo (SearchPostSitterInfoRequest) returns (PostAndSitterInfo){}
+}
+
+message PostAndSitterInfo{
+  string success = 1;
+  repeated SitterPostInfo sitterPostInfo = 2;
 }
 
 message UpdateTransactionStatusRequest{

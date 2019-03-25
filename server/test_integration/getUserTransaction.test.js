@@ -5,7 +5,7 @@ const service = require('./petbnb-client');
 
 
 describe('test getUserTransaction endpoints', () => {
-  it('gets right response message', (done) => {
+  xit('gets right response message', (done) => {
     service.connect().then(
       client => client.getUserTransaction({uid:43}, (err, response) => {
         for(var j=0; j< response.transactions.length; j++){
