@@ -22,7 +22,8 @@ const searchPostSitterInfo = require('./user/searchPostSitterInfo').searchPostSi
 const homePageSitterPostInfo = require('./homePageSitterPostInfo').homePageSitterPostInfo;
 const updateTransactionStatus = require('./transaction/updateTransactionStatus').updateTransactionStatus;
 const getUserTransaction = require('./transaction/getUserTransaction').getUserTransaction;
-
+const searchPostAndSitterInfo = require('./post/searchPostAndSitterInfo').searchPostAndSitterInfo;
+      
 const exportedEndpoints = {
 	updateTransactionStatus,
 	signIn,
@@ -46,6 +47,7 @@ const exportedEndpoints = {
 	searchPostSitterInfo,
 	homePageSitterPostInfo,
 	getUserTransaction,
+   searchPostAndSitterInfo,
 }
 
 module.exports = exportedEndpoints;
