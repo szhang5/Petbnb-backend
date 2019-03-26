@@ -18,7 +18,6 @@ const petImageUpload =  require('./pet/petImageUpload').petImageUpload;
 const deletePet =  require('./pet/deletePet').deletePet;
 const createTransaction = require('./transaction/createTransaction').createTransaction;
 const getUserInfoById = require('./user/getUserInfoById').getUserInfoById;
-const searchPostSitterInfo = require('./user/searchPostSitterInfo').searchPostSitterInfo;
 const homePageSitterPostInfo = require('./homePageSitterPostInfo').homePageSitterPostInfo;
 const updateTransactionStatus = require('./transaction/updateTransactionStatus').updateTransactionStatus;
 const getUserTransaction = require('./transaction/getUserTransaction').getUserTransaction;
@@ -44,10 +43,9 @@ const exportedEndpoints = {
 	editPost,
 	createTransaction,
 	getUserInfoById,
-	searchPostSitterInfo,
 	homePageSitterPostInfo,
 	getUserTransaction,
-   searchPostAndSitterInfo,
+	searchPostAndSitterInfo,
 }
 
 module.exports = exportedEndpoints;
