@@ -22,7 +22,6 @@ service PetBnbService {
   rpc EditPost (EditPostRequest) returns (Success){}
   rpc CreateTransaction (CreateTransactionRequest) returns (Success){}
   rpc GetUserInfoById (GetUserInfoByIdRequest) returns (UserBasicInfo){}
-  rpc SearchPostSitterInfo (SearchPostSitterInfoRequest) returns (UsersBasicInfo){}//Get corresponding sitters' info when search Post
   rpc HomePageSitterPostInfo (Empty) returns (AllSitterPostInfo){}//get All Posts & Sitters' info for home page
   rpc GetUserTransaction (GetUserTransactionRequest) returns (UserTransaction){}
   rpc UpdateTransactionStatus (UpdateTransactionStatusRequest) returns (Success){}
