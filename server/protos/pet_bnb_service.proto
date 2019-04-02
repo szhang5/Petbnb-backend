@@ -26,6 +26,31 @@ service PetBnbService {
   rpc GetUserTransaction (GetUserTransactionRequest) returns (UserTransaction){}
   rpc UpdateTransactionStatus (UpdateTransactionStatusRequest) returns (Success){}
   rpc SearchPostAndSitterInfo (SearchPostSitterInfoRequest) returns (PostAndSitterInfo){}
+  rpc GetSitterInfoById (GetUserInfoByIdRequest) returns (SitterBasicInfo){}
+}
+
+message SitterBasicInfo {
+  string success = 1;
+  Sitter sitter = 2;
+}
+
+message Sitter {
+  int32 sitterid = 1;
+  int32 personid = 2;
+  string email = 3;
+  string firstname = 4;
+  string lastname = 5;
+  string phone = 6;
+  string country = 11;
+  string street = 7;
+  string city = 8;
+  string state = 9;
+  string zip = 10;
+  string image = 12;
+  float lat = 13;
+  float lng = 14;
+  int32 user_type = 15;//(owner) 1   (sitter) 0
+  float balance = 16;
 }
 
 message PostAndSitterInfo{

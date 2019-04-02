@@ -41,7 +41,10 @@ function findPost(pet_type, hour_rate, pets_num, avai_start_date, avai_end_date)
   const rawQuery = `
   SELECT * FROM post WHERE TRUE ${pet_type_condition} ${pets_num_condition} ${hour_rate_condition} ${avai_end_date_condition} ${avai_start_date_condition}
   `;
-
+    
+  console.log("------------------------------------------------");
+  console.log(rawQuery);
+  
   return knex.raw(rawQuery);
 }
 
