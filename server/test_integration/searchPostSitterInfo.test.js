@@ -5,7 +5,7 @@ const service = require('./petbnb-client');
 
 
 describe('test searchPostSitterInfo endpoints', () => {
-  it('gets right response message', (done) => {
+  xit('gets right response message', (done) => {
     service.connect().then(
       client => client.searchPostSitterInfo({pet_type: "cat", hour_rate:15.0, pets_num: 3, avai_start_date: "2018-12-01", avai_end_date:"2019-03-31"}, (err, response) => {
           console.log(response);

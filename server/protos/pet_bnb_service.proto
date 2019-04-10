@@ -26,6 +26,11 @@ service PetBnbService {
   rpc GetUserTransaction (GetUserTransactionRequest) returns (UserTransaction){}
   rpc UpdateTransactionStatus (UpdateTransactionStatusRequest) returns (Success){}
   rpc SearchPostAndSitterInfo (SearchPostSitterInfoRequest) returns (PostAndSitterInfo){}
+  rpc PayTransaction (PayTransactionRequest) returns (Success){}
+}
+
+message PayTransactionRequest{
+  int32 transacid = 1;
 }
 
 message PostAndSitterInfo{
