@@ -57,6 +57,7 @@ message SingleTransaction{
    User sitter = 2;
    TransacInfo transacinfo = 3;
    repeated Pet pets = 4;
+   double rate = 5;
 }
 
 message TransacInfo{

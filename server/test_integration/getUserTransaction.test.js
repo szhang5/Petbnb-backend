@@ -9,17 +9,19 @@ describe('test getUserTransaction endpoints', () => {
     service.connect().then(
       client => client.getUserTransaction({uid:43}, (err, response) => {
         for(var j=0; j< response.transactions.length; j++){
-            console.log("-----------------------------------------------------------------------------------------------");
-            console.log("--------------------------------------------petid");
-             console.log(response.transactions[j].transacinfo.petid); 
-             console.log("--------------------------------------------pets");
-             console.log(response.transactions[j].pets); 
+            console.log("-----------------------------------------------------------------------------------------------SingleTransaction");
+//             console.log("--------------------------------------------petid");
+//              console.log(response.transactions[j].transacinfo.petid); 
+//              console.log("--------------------------------------------pets");
+//              console.log(response.transactions[j].pets); 
             console.log("--------------------------------------------transacinfo");
              console.log(response.transactions[j].transacinfo); 
-            console.log("--------------------------------------------sitter");
-             console.log(response.transactions[j].sitter); 
-            console.log("--------------------------------------------onwer");
-             console.log(response.transactions[j].owner); 
+//             console.log("--------------------------------------------sitter");
+//              console.log(response.transactions[j].sitter); 
+//             console.log("--------------------------------------------onwer");
+//              console.log(response.transactions[j].owner); 
+            console.log("--------------------------------------------rate");
+             console.log(response.transactions[j].rate); 
          }
      
       
