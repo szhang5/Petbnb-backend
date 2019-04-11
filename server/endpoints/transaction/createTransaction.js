@@ -2,19 +2,19 @@
 
 const knex = require('../../models/knex');
 
-async function insertTransaction(ownerid, sitterid, petsid) {
+async function insertTransaction(ownerid, sitterid, petsid, avai_start_date, avai_end_date) {
     const rawInsertQuery = `
-    INSERT INTO transaction (ownerid, sitterid, avai_start_date, avai_end_date, description, pet_type, hour_rate, pets_num) VALUES(?, ?, 
-        (SELECT avai_start_date FROM post WHERE sitterid = ? ),
-        (SELECT avai_end_date FROM post WHERE sitterid = ? ),
+    INSERT INTO transaction (ownerid, sitterid, description, pet_type, hour_rate, pets_num, avai_start_date, avai_end_date) VALUES(?, ?, 
         (SELECT description FROM post WHERE sitterid = ? ),
         (SELECT pet_type FROM post WHERE sitterid = ? ),
         (SELECT hour_rate FROM post WHERE sitterid = ? ),
-        (SELECT pets_num FROM post WHERE sitterid = ? )
+        (SELECT pets_num FROM post WHERE sitterid = ? ),
+        ?,
+        ?
         )
     RETURNING transacid;
     `; 
-    const result = await knex.raw(rawInsertQuery, [ownerid, sitterid, sitterid, sitterid, sitterid, sitterid, sitterid, sitterid]);
+    const result = await knex.raw(rawInsertQuery, [ownerid, sitterid, sitterid, sitterid, sitterid, sitterid, avai_start_date, avai_end_date]);
     const transacid = result.rows[0].transacid;
 
     for(let i = 0; i < petsid.length; i++){
@@ -47,7 +47,7 @@ async function createTransaction(call, callback) {
     var ownerid = 0;
     findOnwerid(call.request.petid).then((result) => {
         ownerid = result.rows[0].uid;
-        	return insertTransaction(ownerid, call.request.sitterid, call.request.petid)
+        	return insertTransaction(ownerid, call.request.sitterid, call.request.petid, call.request.avai_start_date, call.request.avai_end_date)
         .then(() => {
             return callback(null, {
                 success: true,
