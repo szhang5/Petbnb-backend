@@ -2,6 +2,13 @@
 
 const knex = require('../../models/knex');
 
+async function updateStatus(transacid){
+    let rawInsertQuery = `
+        UPDATE transaction SET status  = 2 WHERE transacid = ?;
+    `; 
+    let result = await knex.raw(rawInsertQuery, [transacid]);
+}
+
 async function getTransacDays(transacid) {
     let rawInsertQuery = `
     select date_part('day',(SELECT avai_end_date  FROM transaction WHERE transaction.transacid = ?)-(SELECT avai_start_date  FROM transaction WHERE transaction.transacid = ?))  ;
@@ -22,7 +29,6 @@ async function getTransacInfo(transacid) {
 }
 
 async function updateOwnerBalance(ownerid, rate) {
-    
     let rawInsertQuery = `
         UPDATE usertable SET balance  = balance - ? WHERE uid = ?;
     `; 
@@ -43,7 +49,7 @@ async function updateBalance(transacid) {
     
     await updateOwnerBalance(transacInfo.ownerid, totalRate);
     await updateSitterBalance(transacInfo.sitterid, totalRate);
-    
+    await updateStatus(transacid);
 }
 
 
