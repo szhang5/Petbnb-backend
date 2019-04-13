@@ -12,12 +12,12 @@ async function getTransacDays(transacid) {
 }
 
 async function getTotalRate(transacid, rate){
-    console.log("------------------------------Check 1.1");
+//     console.log("------------------------------Check 1.1");
     let days = await getTransacDays(transacid);
     
     let totalRate = days * rate;
-    console.log("------------------------------Check 1.2");
-    console.log(totalRate);
+//     console.log("------------------------------Check 1.2");
+//     console.log(totalRate);
     return totalRate;
     
 }
@@ -125,9 +125,9 @@ async function getTransactionList(uid){
            };//pet
           let tempPet = [];
           tempPet.push(pet);
-          console.log("-------------------------------------------------------------------Check1");
+//           console.log("-------------------------------------------------------------------Check1");
           let rateTotal = await getTotalRate(transacinfo.transacid, transacinfo.hour_rate);
-          console.log("-------------------------------------------------------------------Check2");
+//           console.log("-------------------------------------------------------------------Check2");
           let singleTransaction = {
                  owner : owner,
                  sitter : sitter,
@@ -144,9 +144,7 @@ async function getTransactionList(uid){
 }
 
 function getUserTransaction(call, callback) {
-  
   return getTransactionList(call.request.uid).then((result) => {
-   
     callback(null, {
       success: true,
       transactions: result,
