@@ -46,12 +46,10 @@ async function updateBalance(transacid) {
     let transacInfo = await getTransacInfo(transacid);
     let days =  await getTransacDays(transacid);
     let totalRate = days * transacInfo.hour_rate;
-    
     await updateOwnerBalance(transacInfo.ownerid, totalRate);
     await updateSitterBalance(transacInfo.sitterid, totalRate);
     await updateStatus(transacid);
 }
-
 
 function payTransaction(call, callback) {
 	return updateBalance(call.request.transacid).then(() => {
