@@ -27,6 +27,11 @@ service PetBnbService {
   rpc UpdateTransactionStatus (UpdateTransactionStatusRequest) returns (Success){}
   rpc SearchPostAndSitterInfo (SearchPostSitterInfoRequest) returns (PostAndSitterInfo){}
   rpc PayTransaction (PayTransactionRequest) returns (Success){}
+  rpc CheckNewTransactionExist (GetUserTransactionRequest) returns (CheckNewTransactionExistResponse){}
+}
+
+message CheckNewTransactionExistResponse {
+  int32 newTransactionCount = 1;
 }
 
 message PayTransactionRequest{
@@ -299,4 +304,5 @@ message Pet{
   string breed = 8;
   string image = 9;
 }
+
 
