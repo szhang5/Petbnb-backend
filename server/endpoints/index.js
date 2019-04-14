@@ -23,6 +23,7 @@ const updateTransactionStatus = require('./transaction/updateTransactionStatus')
 const getUserTransaction = require('./transaction/getUserTransaction').getUserTransaction;
 const searchPostAndSitterInfo = require('./post/searchPostAndSitterInfo').searchPostAndSitterInfo;
 const payTransaction = require('./transaction/payTransaction').payTransaction;
+const checkNewTransactionExist = require('./transaction/checkNewTransactionExist').checkNewTransactionExist;
       
 const exportedEndpoints = {
 	updateTransactionStatus,
@@ -48,6 +49,7 @@ const exportedEndpoints = {
 	getUserTransaction,
 	searchPostAndSitterInfo,
 	payTransaction,
+	checkNewTransactionExist,
 }
 
 module.exports = exportedEndpoints;
