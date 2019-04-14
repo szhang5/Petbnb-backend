@@ -141,8 +141,6 @@ async function getTransactionList(uid){
 
           let rateTotal = await getTotalRate(transacinfo.transacid, transacinfo.hour_rate);
 
-          let rateTotal = await getTotalRate(transacinfo.transacid, transacinfo.hour_rate);
-
           let singleTransaction = {
                  owner : owner,
                  sitter : sitter,
