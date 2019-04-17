@@ -39,7 +39,7 @@ async function findTransaction(uid) {
   usertable sitter, usertable owner, pet 
   WHERE (ownerid = ? or sitterid = ?) AND cur.transacid= trans.transacid AND ownerid = owner.uid AND sitterid = sitter.uid 
   AND cur.petid = pet.petid 
-  order by status, transacid;
+  order by status, transacid DESC;
   `;
   return knex.raw(rawQuery, [uid, uid]);
 }
